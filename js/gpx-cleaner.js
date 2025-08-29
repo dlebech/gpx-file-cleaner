@@ -267,7 +267,10 @@ class GPXCleaner {
         if (!this.cleanedGPX) return;
         
         const serializer = new XMLSerializer();
-        const xmlString = serializer.serializeToString(this.cleanedGPX);
+        let xmlString = serializer.serializeToString(this.cleanedGPX);
+        
+        // Remove any existing XML declaration from the serialized string
+        xmlString = xmlString.replace(/^<\?xml[^>]*\?>\s*/, '');
         
         // Create formatted XML with proper declaration
         const formattedXml = '<?xml version="1.0" encoding="UTF-8"?>\n' + 
