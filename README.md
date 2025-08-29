@@ -25,3 +25,7 @@ Then open http://localhost:8000 in your browser.
 
 ### Web Server
 Simply upload all files to any web server and access the index.html file.
+
+## Note
+
+This project is mostly AI-generated.
