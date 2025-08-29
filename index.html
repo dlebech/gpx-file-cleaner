@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPX File Cleaner</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>GPX File Cleaner</h1>
+            <ul>
+                <li>Remove extensions (e.g. heart rate, cadence, power data)</li>
+                <li>Trim GPS points from start and end of tracks</li>
+                <li>Perfect for cleaning fitness tracker exports</li>
+                <li><strong>100% client-side processing - your data never leaves your browser</strong></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="upload-section" id="uploadSection">
+                <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" accept=".gpx" />
+                    <button class="file-input-button">Choose GPX File</button>
+                </div>
+                <p style="margin-top: 15px; color: #666;">or drag and drop a GPX file here</p>
+                <div id="fileName" style="margin-top: 15px; font-weight: 600; color: #333;"></div>
+            </div>
+            
+            <div id="fileMessages"></div>
+            
+            <div class="controls-section" id="controlsSection">
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="startPoints">Remove points from start:</label>
+                        <input type="number" id="startPoints" value="100" min="0" />
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="endPoints">Remove from end:</label>
+                        <input type="number" id="endPoints" value="100" min="0" />
+                    </div>
+                    
+                </div>
+                
+                <button class="process-button" id="processButton" disabled>Process GPX File</button>
+                
+                <div id="messages"></div>
+                
+                <div class="results" id="results">
+                    <div class="result-item">
+                        <h3>Processing Complete!</h3>
+                        <p id="summary"></p>
+                        <button class="download-button" id="downloadButton">Download Cleaned GPX</button>
+                    </div>
+                </div>
+                
+                <div class="visualization" id="visualization">
+                    <h3>Track Comparison</h3>
+                    <div class="canvas-container">
+                        <div class="canvas-wrapper">
+                            <canvas id="originalCanvas" width="400" height="300"></canvas>
+                            <div class="canvas-title" id="originalTitle">Original Track</div>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas id="cleanedCanvas" width="400" height="300"></canvas>
+                            <div class="canvas-title" id="cleanedTitle">Cleaned Track</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/gpx-cleaner.js"></script>
+</body>
+</html>
